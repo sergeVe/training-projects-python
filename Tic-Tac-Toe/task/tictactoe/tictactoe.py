@@ -27,7 +27,6 @@ class TicTacToe:
         while True:
             if self.state == 'init':
                 print(self.get_game_representation())
-                self.another_player = not self.another_player
                 self.change_state('game on')
 
             if self.state == 'game on':
@@ -154,7 +153,7 @@ class TicTacToe:
         return self.game_matrix[self.dimension - y][x - 1] == self.placeholder
 
     def add_new_cell(self, f_list):
-        cell = 'X' if self.another_player else 'O'
+        cell = 'O' if self.another_player else 'X'
         x, y = [int(x) for x in f_list]
         self.game_matrix[self.dimension - y][x - 1] = cell
         return self.game_matrix
