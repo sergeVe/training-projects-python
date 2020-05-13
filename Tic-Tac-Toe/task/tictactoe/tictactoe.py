@@ -57,14 +57,14 @@ class TicTacToe:
         for i in range(0, self.dimension):
             for j in range(0, self.dimension):
                 current = self.game_matrix[i][j]
-                if (j + 1) % 3 == 1:
+                if (j + 1) % self.dimension == 1:
                     out_string += '|' + ' ' + current
-                elif (j + 1) % 3 == 0:
+                elif (j + 1) % self.dimension == 0:
                     out_string += ' ' + current + ' |' + '\n'
                 else:
                     out_string += ' ' + current
         else:
-            out_string += '-' * 9
+            out_string += '-' * self.dimension * self.dimension
         return out_string
 
     def check_horizontal(self, player) -> bool:
