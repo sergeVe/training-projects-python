@@ -28,7 +28,6 @@ class TicTacToe:
             if self.state == 'init':
                 print(self.get_game_representation())
                 self.change_state('game on')
-
             if self.state == 'game on':
                 self.process_plays_move()
                 print(self.get_game_representation())
@@ -48,7 +47,7 @@ class TicTacToe:
         return None
 
     def get_init_matrix(self) -> list:
-        return [[x for x in self.init_string[i:i + 3]] for i in
+        return [[x for x in self.init_string[i:i + self.dimension]] for i in
                 range(0, self.dimension * self.dimension, self.dimension)]
 
     def get_game_representation(self) -> str:
@@ -63,9 +62,8 @@ class TicTacToe:
                     out_string += ' ' + current + ' |' + '\n'
                 else:
                     out_string += ' ' + current
-        else:
-            out_string += '-' * self.dimension * self.dimension
-        return out_string
+
+        return out_string + '-' * self.dimension * self.dimension
 
     def check_horizontal(self, player) -> bool:
         for row in range(0, self.dimension):
